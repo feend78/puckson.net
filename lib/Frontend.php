@@ -44,9 +44,10 @@ class Frontend extends ApiFrontend {
         // Menu
         // If you are using a complex menu, you can re-define
         // it and place in a separate class
-        $this->add('Menu',null,'Menu');
-            ->addMenuItem('Info','index');
-            ->addMenuItem('Sign Up', 'signup');
+        $this->add('Menu',null,'Menu')
+            ->addMenuItem('Info','index')
+            ->addMenuItem('Sign Up', 'signup')
+            ;
     }
     function page_examples($p){
         header('Location: '.$this->pm->base_path.'examples');
