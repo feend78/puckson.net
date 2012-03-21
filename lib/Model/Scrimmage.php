@@ -13,4 +13,7 @@ class Model_Scrimmage extends Model_Table {
         $this->addField('created_dts')->type('timestamp')->system(true);
         $this->addField('updated_dts')->type('timestamp')->system(true);
     }
+    function sign_up($player_id) {
+        $m = $this->add(Model_Signup);
+    }
 }

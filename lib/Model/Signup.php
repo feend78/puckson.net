@@ -7,8 +7,9 @@ class Model_Signup extends Model_Table {
     function init(){
         parent::init();
 
-        $this->addField('player_id')->refModel('Model_Player');
-        $this->addField('scrimmage_id')->refModel('Model_Scrimmage');
+        $this->addField('player_id')->refModel('Model_Player')->mandatory(true);
+        $this->addField('scrimmage_id')->refModel('Model_Scrimmage')->mandatory(true);
+        $this->addField('priority')->type('int')->mandatory(true);
 
         $this->addField('is_playing')->type('boolean')->calculated(true);
 
@@ -20,7 +21,6 @@ class Model_Signup extends Model_Table {
         $dsql = $this->api->dsql()
             ->table('signup')
             ->field('id')
-
             ->limit($this->api->getConfig('signup/max_players', 22))
             ;
 
