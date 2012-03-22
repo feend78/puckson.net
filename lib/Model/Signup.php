@@ -18,15 +18,12 @@ class Model_Signup extends Model_Table {
     }
 
     function calculate_is_playing() {
-        $dsql = $this->api->dsql()
-            ->table('signup')
-            ->field('id')
-            ->limit($this->api->getConfig('signup/max_players', 22))
-            ;
 
-        return $this->dsql()->debug()
-            ->field('id')
-            ->where('su.id in ('.$dsql->select().')')
+        return $this->api->db->dsql()
+            ->table('signup su2')
+            ->field('IF(su2.id IS NULL, \'N\', \'Y\')')
+            ->join('(select id from signup order by priority desc, created_dts limit 0'.$this->api->getConfig('signup/max_players',22).') AS su3', 'su2.id=su3.id')
+            ->where('su.id=su2.id')
             ->select()
             ;
     }
