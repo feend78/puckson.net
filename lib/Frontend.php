@@ -30,19 +30,23 @@ class Frontend extends ApiFrontend {
             ->_load('ui.atk4_notify')
             ;
 
-        // This method is executed for ALL the pages you are going to add,
+        // If you wish to restrict actess to your pages, use BasicAuth class
+        $this->add('SignupAuth');
+            // use check() and allowPage for white-list based auth checking
+            //->check()
+            ;
+
+        // This method is executed for ALL the peages you are going to add,
         // before the page class is loaded. You can put additional checks
         // or initialize additional elements in here which are common to all
         // the pages.
-
-
 
         // Menu
         // If you are using a complex menu, you can re-define
         // it and place in a separate class
         $this->add('Menu',null,'Menu')
-            ->addMenuItem('Home','index')
-            ->addMenuItem('Signup Details', 'details')
+            ->addMenuItem('Info','index')
+            ->addMenuItem('Sign Up', 'signup')
             ;
     }
     function page_examples($p){

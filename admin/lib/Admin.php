@@ -24,7 +24,7 @@ class Admin extends ApiFrontend {
             ->_load('ui.atk4_notify')
             ;
 
-        // Allow user: "admin", with password: "puck4023" to use this application
+        // Allow user: "admin", with password: "demo" to use this application
         $this->add('BasicAuth')->allow('admin','puck4023')->check();
 
         $menu=$this->add('Menu',null,'Menu');
