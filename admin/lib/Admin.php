@@ -27,8 +27,9 @@ class Admin extends ApiFrontend {
         // Allow user: "admin", with password: "puck4023" to use this application
         $this->add('BasicAuth')->allow('admin','puck4023')->check();
 
-        $menu=$this->add('Menu',null,'Menu');
-        $menu->addMenuItem('Manager','mgr');
+        $menu=$this->add('Menu',null,'Menu')
+          ->addMenuItem('Manager','mgr')
+          ->addMenuItem('Signup Test', 'signup');
     }
     function page_index($p){
         $this->api->redirect('mgr');

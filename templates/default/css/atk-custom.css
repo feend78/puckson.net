@@ -1,0 +1,44 @@
+/* AgileToolkit 4.0.3 // http://www.agiletoolkit.org */
+/* Default Agiletoolkit's Theme */
+/* This stylesheet contains selectors for the default UI layout */
+
+
+/* --------------------------------------------------------------------
+  Default Layout
+-------------------------------------------------------------------- */
+#header:after {content:".";display:block;height:0;clear:both;visibility:hidden;font-size:0;}
+#header {padding:2em 0;margin-bottom:1em;.zoom:1;.display:block;}
+#header-right {float:right;}
+#header-right .atk-menu {float:right;}
+#header-right #atk-version {clear: both;float:right;margin-top:1em;}
+#navigation ul {overflow:hidden;}
+#navigation ul li {float:left;padding: 0.5em 1em;}
+#footer {text-align:center;}
+
+
+/* --------------------------------------------------------------------
+  Default Layout
+-------------------------------------------------------------------- */
+#atk-logo {border:none;font-size:0;line-height:0;}
+
+/* custom */
+
+p.disclaimer {font-size:8pt;padding-top:3pt;}
+
+.scrimmage-signup {font-weight:bold;font-size:110%;margin-bottom:6pt;}
+.scrimmage-signup .date {float:left;}
+.scrimmage-signup .time {float:right;}
+.scrimmage-signup .location {clear:both;}
+
+.signup h3 {
+    line-height:2em;
+    font-size:14pt;
+    text-align:center;
+    color: #fff;
+    background:#002d5e;
+    background:-webkit-gradient(linear,left top,left bottom, from(#00070f), to(#002d5e));
+    background:-moz-linear-gradient(top, #00070f, #002d5e);
+    background-image:-o-linear-gradient(#00070f, #002d5e);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#00070f", endColorstr="#002d5e");}
+
+.signup h4 {text-align:center;}

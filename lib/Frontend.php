@@ -43,6 +43,7 @@ class Frontend extends ApiFrontend {
         $this->add('Menu',null,'Menu')
             ->addMenuItem('Home','index')
             ->addMenuItem('Signup Details', 'details')
+            ->addMenuItem('Current Signup', 'signup')
             ;
     }
     function page_examples($p){
