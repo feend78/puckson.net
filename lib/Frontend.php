@@ -5,6 +5,9 @@
 class Frontend extends ApiFrontend {
     function init(){
         parent::init();
+        
+        $this->api->readConfig('config-signup.php');
+        
         // Keep this if you are going to use database on all pages
         $this->dbConnect();
 
