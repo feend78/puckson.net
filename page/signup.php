@@ -34,7 +34,9 @@ class page_signup extends Page {
     // load the model with the data we found
     $m->loadData($s[0]['id']);
     // re-format time
-    // TODO: this has to be handled somewhere... noob hack
+    
+    // TODO: fix!
+    // this has to be handled somewhere else... noob hack
     $t=explode(':', $m->get('start_time'));
     if ($t[0] > 12) {
       $t[0]=$t[0]-12;
