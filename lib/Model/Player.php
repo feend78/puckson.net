@@ -13,8 +13,6 @@ class Model_Player extends Model_Table {
 
         $this->addField('priority')->type('int')->display(array('grid'=>'priority'))->calculated(true);
 
-        $this->addField('created_dts')->type('timestamp')->system(true);
-        $this->addField('updated_dts')->type('timestamp')->system(true);
     }
 
     function calculate_priority() {

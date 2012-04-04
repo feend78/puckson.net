@@ -6,6 +6,8 @@ class Admin extends ApiFrontend {
 
     function init(){
         parent::init();
+        
+        $this->api->readConfig('config-signup.php');
         $this->dbConnect();
 
         $this->addLocation('..',array(

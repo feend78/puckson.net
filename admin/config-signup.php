@@ -12,5 +12,7 @@ $config['locale']['datetime']='m/d/Y h:i A';
 
 # Signup settings
 $config['signup']['max_players']=22;
+$config['signup']['open_time']='12:00';
 $config['signup']['pri_deadline']='-1 day 17:00';
-$config['signup']['close_time']='-1 hour';
+$config['signup']['close_time']='17:00';
+

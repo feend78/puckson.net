@@ -7,26 +7,39 @@ class Model_Signup extends Model_Table {
   function init(){
     parent::init();
 
-    $this->addField('player_id')->refModel('Model_Player')->required(true);
-    $this->addField('scrimmage_id')->refModel('Model_Scrimmage')->required(true);
-    $this->addField('priority')->type('int')->display(array('grid'=>'priority'))->required(true);
-    $this->addField('position')->required(true);
+    $this->addField('player_id')
+      ->refModel('Model_Player')
+      ->required(true);
+      
+    $this->addField('scrimmage_id')
+      ->refModel('Model_Scrimmage')
+      ->required(true);
+      
+    $this->addField('priority')
+      ->type('list')
+      ->display(array('grid'=>'priority'))
+      ->required(true)
+      ->listData(array('Guest','Associate','Member'));
+      
+    $this->addField('position')
+      ->type('list')
+      ->required(true)
+      ->display('dropdown')
+      ->listData(array('skater'=>'skater','goalie'=>'goalie'));
 
-    $this->addField('number')->calculated(true);
+    $this->addField('signup_dts')
+      ->type('datetime')
+      ->caption('Signup Date/Time')
+      ->system(true);
 
-    $this->addField('signup_dts')->type('datetime')->caption('Signup Date/Time');
+    $this->addField('is_before_deadline')->system(true);
 
-    $this->join_entities['r']=array(
-      'entity_name'   =>'(SELECT @curRow := 0)',
-      'on'            =>'1=1',
-      'join'          =>'inner',
-    );
   }
 
-  function calculate_number() {
-
-    return '@curRow := @curRow + 1';
+  function beforeInsert(&$data) {
+    $data['signup_dts']=date('Y-m-d H:i:s');
   }
+
 }
 
 

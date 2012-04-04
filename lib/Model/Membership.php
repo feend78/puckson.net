@@ -18,12 +18,11 @@ class Model_Membership extends Model_Table {
     function init() {
         parent::init();
 
-        $this->addField('type')->type('mbrtype')->caption('Membership Type');
+        $f=$this->addField('type')
+          ->type('list')
+          ->caption('Membership Type')
+          ->display(array('grid'=>'mbrtype','form'=>'dropdown'))
+          ->listData(array('1'=>'Associate','2'=>'Full','3'=>'Student','4'=>'Goalie'));
 
-        $this->addField('created_dts')->type('timestamp')->system(true);
-        $this->addField('updated_dts')->type('timestamp')->system(true);
-    }
-    function get_mbrtypes() {
-      return $mbr_types;
     }
 }

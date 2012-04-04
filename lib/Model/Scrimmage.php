@@ -7,16 +7,18 @@ class Model_Scrimmage extends Model_Table {
   function init(){
     parent::init();
 
-    $this->addField('date')->type('date')->required(true);
-    $this->addField('start_time')->type('time')->required(true);
+    $this->addField('date')
+      ->type('date')
+      ->required(true);
+    $this->addField('start_time')
+      ->type('time')
+      ->display(array('grid'=>'time'))
+      ->required(true);
     $this->addField('location')->required(true);
-    //$this->addField('name')->calculated(true);
 
-    $this->addField('current_start')->type('timestamp');
-    $this->addField('current_end')->type('timestamp');
+    $this->addField('current_start')->type('datetime');
+    $this->addField('current_end')->type('datetime');
 
-    $this->addField('created_dts')->type('timestamp')->system(true);
-    $this->addField('updated_dts')->type('timestamp')->system(true);
   }
   function signPlayerUp($player_id, $position) {        
     $p=$this->add('Model_Player')->loadData($player_id);
@@ -27,11 +29,14 @@ class Model_Scrimmage extends Model_Table {
       ;
 
     if (!$s->isInstanceLoaded()) {   
+      $deadline=(time() < strtotime($this->api->getConfig('signup/pri_deadline','-1 day 17:00'), strtotime($this->get('date'))))?true:false;
+
       $s->set('scrimmage_id',       $this->get('id'))
         ->set('player_id',          $p->get('id'))
         ->set('position',           $position)
         ->set('priority',           $p->get('priority'))
         ->set('signup_dts',         date('Y-m-d H:i:s'))
+        ->set('is_before_deadline', $deadline)        
         ->update()
         ;
     }
