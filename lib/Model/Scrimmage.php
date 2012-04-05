@@ -29,7 +29,7 @@ class Model_Scrimmage extends Model_Table {
       ;
 
     if (!$s->isInstanceLoaded()) {   
-      $deadline=(time() < strtotime($this->api->getConfig('signup/pri_deadline','-1 day 17:00'), strtotime($this->get('date'))))?true:false;
+      $deadline=(time() < strtotime($this->api->getConfig('signup/pri_deadline','-1 day 17:00'), strtotime($this->get('date'))))?'Y':'N';
 
       $s->set('scrimmage_id',       $this->get('id'))
         ->set('player_id',          $p->get('id'))

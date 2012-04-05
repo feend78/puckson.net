@@ -22,9 +22,9 @@ class page_signup extends Page {
     $v=$this->add('View',null,null,array('view/scrimmage'));
     $v->setModel('Scrimmage')->loadData($scrimmage->get('id'));
     // pretty up thte date and time
-    $v->template->set('start_time', date('h:i A', $v->template->get('start_time')));
+    $v->template->set('start_time', date('h:i A', strtotime($v->template->get('start_time'))));
     $v->template->set('date', date('m/d/Y', strtotime($v->template->get('date'))));
-
+    
     // populate the page accordingly
     if ( !$scrimmage->isInstanceLoaded() ) {
       // no scrimmage; get rid of the view
